@@ -1,0 +1,17 @@
+[Unit]
+Description=Restaurant Telegram Bot
+After=network.target
+
+[Service]
+Type=simple
+User=YOUR_USERNAME
+WorkingDirectory=/path/to/your/bot/directory
+Environment=PATH=/path/to/your/python/environment/bin
+ExecStart=/path/to/your/python/environment/bin/python bot_service.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target 

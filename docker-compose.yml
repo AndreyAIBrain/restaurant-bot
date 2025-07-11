@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  restaurant-bot:
+    build: .
+    container_name: restaurant-bot
+    restart: unless-stopped
+    volumes:
+      - ./bot.log:/app/bot.log
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - bot-network
+
+networks:
+  bot-network:
+    driver: bridge 
