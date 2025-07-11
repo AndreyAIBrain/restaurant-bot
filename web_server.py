@@ -67,11 +67,11 @@ def update_bot_status(started=True, message_count=0):
         total_messages += message_count
         last_activity = datetime.now().isoformat()
 
-def run_web_server(host='0.0.0.0', port=5000):
+def run_web_server():
     """Запуск веб-сервера в отдельном потоке"""
+    port = int(os.environ.get("PORT", 5000))
     def run():
-        app.run(host=host, port=port, debug=False)
-    
+        app.run(host="0.0.0.0", port=port, debug=False)
     thread = threading.Thread(target=run, daemon=True)
     thread.start()
     return thread
