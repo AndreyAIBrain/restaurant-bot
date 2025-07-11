@@ -2,9 +2,12 @@ import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 import os
 import time
+from dotenv import load_dotenv
+
+# Загружаем переменные окружения
+load_dotenv()
 
 # Инициализация бота
-import os
 TOKEN = os.getenv('TOKEN', "7634334499:AAFeR7PB0KTQHR74mPvehZlKaKFmRfk1fIM")
 bot = telebot.TeleBot(TOKEN)
 
