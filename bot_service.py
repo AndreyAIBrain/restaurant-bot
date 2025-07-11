@@ -20,11 +20,20 @@ logger = logging.getLogger(__name__)
 # Импортируем бота из основного файла
 from restaurant_bot import bot, TOKEN
 
+# Импортируем веб-сервер
+from web_server import run_web_server, update_bot_status
+
 def run_bot():
-    """Запуск бота с автоматическим перезапуском"""
+    """Запуск бота с автоматическим перезапуском и веб-сервером"""
+    
+    # Запускаем веб-сервер для мониторинга
+    web_thread = run_web_server()
+    logger.info("🌐 Web server started for monitoring")
+    
     while True:
         try:
             logger.info("🚀 Запускаем бота...")
+            update_bot_status(started=True)
             
             # Очищаем webhook перед запуском
             try:
